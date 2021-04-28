@@ -1,0 +1,17 @@
+[Unit]
+Description=Spectroo UPS manager
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python -u spectroo_ups.py
+WorkingDirectory=/usr/share/spectrooups
+#StandardOutput=inherit
+#StandardError=inherit
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=SpectrooUPS
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
